@@ -48,5 +48,6 @@ class SampleChunkSeeder extends Seeder
   //       		'price' => 101,
   //       		'stock' => 1
   //       	]);
+    
     }
 }
