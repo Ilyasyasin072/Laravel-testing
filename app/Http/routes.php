@@ -63,6 +63,8 @@ Route::get('/list-stock-chunk', function(){
 Route::get('/order-product', 'OrderTransactionController@triggerTransaction');
 Route::get('/order-product-new', 'OrderTransactionController@beginTransaction');
 Route::get('connectionCustomer','CustomersController@connection');
+Route::get('customer/{id}','CustomersController@findbyId');
 Route::get('connectionProduct', 'ProductsController@connectionwithcache');
 Route::get('cachewithupdate', 'ProductsController@cachewithupdate');
-
+Route::get('product','ProductsController@index');
+Route::get('post','PostsController@scopGlobal');

@@ -53,16 +53,16 @@ return [
         ],
         //fungsi read/write dengan berbeda database berguna untuk memisahkan antara user yang dapat merubah dan yang tidak merubah *) catatan bukularavel halaman (298)
         'mysql' => [
-            'read' => [
-                'database' => env('DB_DATABASE', 'forge'),
-            ],
-            'write' => [
-                'database' => env('DB_DATABASE_2', 'homestead2'),
-            ],
+            // 'read' => [
+            //     'database' => env('DB_DATABASE', 'forge'),
+            // ],
+            // 'write' => [
+            //     'database' => env('DB_DATABASE_2', 'homestead2'),
+            // ],
             'driver' => 'mysql',
             'host' => env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '3306'),
-//            'database' => env('DB_DATABASE', 'forge'),
+            'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
