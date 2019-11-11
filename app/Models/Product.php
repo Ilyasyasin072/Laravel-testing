@@ -37,4 +37,14 @@ class Product extends Model
          break;
       }
    }
+
+   protected static function boot()
+   {
+      parent::boot();
+
+      static::created(function($model)
+      {
+         \Log::info('Berhasil Menambahkan ' . $model->name . ' Stock : ' . $model->stock);
+      });
+   }
 }
