@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     protected $appends = ['fullname'];
+    protected $casts = [
+        'activated' => 'boolean',
+    ];
 
     public function setPasswordAttribute($password)
     {

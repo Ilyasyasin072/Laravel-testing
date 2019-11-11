@@ -10,6 +10,10 @@ class Product extends Model
    //use SoftDeletes;
    //protected $dates = ['deleted_at'];
 
+   protected $casts = [
+      'price' => 'double',
+   ];
+
    public function scopeOverstock($query)
    {
       return $query->where('stock', '<', 10);
