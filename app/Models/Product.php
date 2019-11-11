@@ -38,13 +38,22 @@ class Product extends Model
       }
    }
 
-   protected static function boot()
-   {
-      parent::boot();
+   // protected static function boot()
+   // {
+   //    parent::boot();
 
-      static::created(function($model)
-      {
-         \Log::info('Berhasil Menambahkan ' . $model->name . ' Stock : ' . $model->stock);
-      });
-   }
+   //    // static::created(function($model)
+   //    // {
+   //    //    \Log::info('Berhasil Menambahkan ' . $model->name . ' Stock : ' . $model->stock);
+   //    // });
+
+   //    static::observe(new \App\ProducObserver);
+   //    static::updating(function($model){
+         
+   //       if (DB::table('orders_products')->where('product_id', $model->id)->count() > 0 && $model->isDirty('name')) {
+   //          return false;
+   //       }  
+
+   //    });
+   // }
 }

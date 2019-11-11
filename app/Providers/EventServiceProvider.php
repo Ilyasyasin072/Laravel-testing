@@ -27,10 +27,36 @@ class EventServiceProvider extends ServiceProvider
     public function boot(DispatcherContract $events)
     {
         parent::boot($events);
-        \App\Models\Product::created(function($mode){
+        \App\Models\Product::created(function($model){
         \Log::info('Berhasil menambahkan ' .$model->name . 'Stock : ' .$model->stock . '(dari EventServiceProvider)');
     });
 
-        //
+        \App\Models\Product::updating(function($model)
+        {
+            $changes = [];
+            foreach($model->getDirty() as $attribute => $new)
+            {
+                $original = $model->getOriginal($attribute);
+                if ($original != $new)
+                {
+                    $change = [
+                        'attribute' => $attribute,
+                        'from' => $original,
+                        'to' => $new
+                    ];
+                    $changes[] = $change;
+                }
+            }
+
+            if (count($changes) > 0)
+            {
+                \App\ProductLog::create([
+                    'product_id' => $model->id,
+                    'changes' => $changes
+                ]);
+            }
+
+            return true;
+        });
     }
 }
