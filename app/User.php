@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
+    protected $fillabel = ['email','firstname','lastname','password', 'birth_date', 'activated'];
     protected $appends = ['fullname'];
     protected $casts = [
         'activated' => 'boolean',
@@ -30,5 +31,10 @@ class User extends Model
     public function getBithDateAttribute($date)
     {
         return \Carbon\Carbon::createFromFormat('Y-m-d', $date)->format('d/m/y');
+    }
+
+    public function preference()
+    {
+        return $this->hasOne('App\Preference');
     }
 }

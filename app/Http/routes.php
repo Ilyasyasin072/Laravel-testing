@@ -68,3 +68,7 @@ Route::get('connectionProduct', 'ProductsController@connectionwithcache');
 Route::get('cachewithupdate', 'ProductsController@cachewithupdate');
 Route::get('product','ProductsController@index');
 Route::get('post','PostsController@scopGlobal');
+
+Route::get('/product/{product}', function($product){
+	return $product;
+});
